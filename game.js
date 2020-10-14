@@ -36,7 +36,7 @@ var loader = new THREE.GLTFLoader();
 
 loader.load(
 	// resource URL
-	"testBox2.glb",
+	"testCube2.glb",
 	// called when the resource is loaded
 	function ( gltf ) {
 
