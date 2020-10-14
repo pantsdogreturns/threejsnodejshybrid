@@ -1,0 +1,9 @@
+GLTFLoader.js:57 ProgressEvent {isTrusted: true, lengthComputable: true, loaded: 960, total: 960, type: "progress", …}bubbles: falsecancelBubble: falsecancelable: falsecomposed: falsecurrentTarget: XMLHttpRequest {onreadystatechange: null, readyState: 4, timeout: 0, withCredentials: false, upload: XMLHttpRequestUpload, …}defaultPrevented: falseeventPhase: 0isTrusted: truelengthComputable: trueloaded: 960path: []returnValue: truesrcElement: XMLHttpRequest {onreadystatechange: null, readyState: 4, timeout: 0, withCredentials: false, upload: XMLHttpRequestUpload, …}target: XMLHttpRequest {onreadystatechange: null, readyState: 4, timeout: 0, withCredentials: false, upload: XMLHttpRequestUpload, …}timeStamp: 343.0000000007567total: 960type: "progress"__proto__: ProgressEvent
+_onError @ GLTFLoader.js:57
+(anonymous) @ THREE.js:34460
+XMLHttpRequest.send (async)
+load @ THREE.js:34513
+load @ GLTFLoader.js:71
+(anonymous) @ game.js:37
+game.js:61  a loading error has occured: 
+game.js:62
