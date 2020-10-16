@@ -1,4 +1,4 @@
-# spacecity
+# Node.js and Three.js collaboration
 This github repository contains the code necessary to set up a three.js and node.js project without importing three as a node module, allowing you to run the three.js code on the user side, instead of the server side. Upon a succesful run you will load a webpage with some 3d objects. The green one is  a GLTF object (to ensure XMLHttpRequests are working on the server, and the other color ones are three objects.
 
 In order to get this to work you will need to install git: https://git-scm.com/download/
