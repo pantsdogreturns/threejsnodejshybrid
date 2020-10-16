@@ -42,3 +42,7 @@ http.createServer(function (request, response) {
 }).listen(port)
 
 console.log("listening on port "+port)
+
+var url_ = 'http://localhost:3000/index.html';
+var start = (process.platform == 'darwin'? 'open': process.platform == 'win32'? 'start': 'xdg-open');
+require('child_process').exec(start + ' ' + url_);
