@@ -6,4 +6,4 @@ run
 node server.js
 
 visit
-http://localhost:3000
+http://localhost:3000/index.html
