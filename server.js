@@ -1,19 +1,44 @@
-var express = require('express');
-var app = express();
-var path = require('path');
+// Example minimal server from StackOverflow comment by user B T (https://stackoverflow.com/users/122422/b-t)
+// https://stackoverflow.com/questions/6084360/using-node-js-as-a-simple-web-server/26354478#26354478
+// 
+// run the server using `node server.js` and you can access any files that are in the same directory.
+// in a browser, visit http://localhost:9615/[filename]
 
-var fs = require("fs");
-var host = "127.0.0.1";
-var port = 3000;
+// example url (self reference) http://localhost:9615/server.js
 
-//the line below loads all scripts and other files (inside the same folder as server.js) as non html files so there is no crash.
-app.use(express.static(__dirname));
+var http = require('http')
+var url = require('url')
+var fs = require('fs')
+var path = require('path')
+var baseDirectory = __dirname   // or whatever base directory you want
 
-//this line loads
-app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname + '/SpaceCity.html'));
-});
+var port = 3000
 
+http.createServer(function (request, response) {
+    try {
+        var requestUrl = url.parse(request.url)
 
-app.listen(port);
-console.log("app listening on port:" + port);
+        // need to use path.normalize so people can't access directories underneath baseDirectory
+	var normalizedPath = path.normalize(requestUrl.pathname)
+	if(normalizedPath == "/") {
+		normalizedPath = "/index.html"
+	}
+        var fsPath = baseDirectory+normalizedPath
+
+        var fileStream = fs.createReadStream(fsPath)
+        fileStream.pipe(response)
+        fileStream.on('open', function() {
+             response.writeHead(200)
+        })
+        fileStream.on('error',function(e) {
+             response.writeHead(404)     // assume the file doesn't exist
+             response.end()
+        })
+   } catch(e) {
+        response.writeHead(500)
+        response.end()     // end the response so browsers don't hang
+        console.log(e.stack)
+   }
+}).listen(port)
+
+console.log("listening on port "+port)
